@@ -29,7 +29,7 @@ def addPost():
         title = request.form['blogTitle']
         author = request.form['blogAuthorName']
         content = request.form['blogContent']
-        blog_post = BlogPost(blog_title=title,blog_author=author,blog_content=content)
+        blog_post = BlogPost(blog_title=title, blog_author=author, blog_content=content)
         db.session.add(blog_post)
         db.session.commit()
         return redirect(url_for('displayPost', post_id=blog_post.id))
@@ -44,7 +44,6 @@ def displayBlog():
 def displayPost(post_id):
     # get the last post in the database
     post = BlogPost.query.filter_by(id=post_id).one()
-    print post
     return render_template('blogpost.html',post=post)
 
 @app.route('/aboutme')
