@@ -1,7 +1,6 @@
 {% extends "base.html" %}
-{% block title %}Hi{% endblock %}
 {% block content %}
-    <form class="form-horizontal" method="post" action="/addpost">
+    <form class="form-horizontal" method="post" action="{{ url_for('addPost') }}">
         <fieldset>
         <legend>Create Your Blog</legend>
 
@@ -11,6 +10,7 @@
                 <input id="txtTitle" name="blogTitle" type="text" class="form-control input-md">
             </div>
         </div>   
+        
         <div class="form-group">
             <label class="col-md-4 control-label" for="blogAuthor">Author</label>  
             <div class="col-md-4">
