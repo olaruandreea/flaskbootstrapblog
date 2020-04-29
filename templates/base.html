@@ -2,7 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}Recepies Blog{% endblock %}</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -12,13 +12,19 @@
                      <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <!-- <a class="nav-link" href="{{ url_for('displayBlog') }}">Blog<span class="sr-only">(current)</span></a> -->
+                    <a class="nav-link" href="{{ url_for('displayBlog') }}">Blog<span class="sr-only">(current)</span></a> 
                </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="{{ url_for('addPost') }}">Add Post<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                <a class="nav-link" href="{{ url_for('aboutMe') }}">About Me<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="{{ url_for('aboutMe') }}">About Me<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('contactMe') }}">Contact Me<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="{{ url_for('aboutMe') }}">Admin<span class="sr-only">(current)</span></a>
                 </li>
             </ul>
         </div>
