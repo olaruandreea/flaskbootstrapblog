@@ -17,7 +17,8 @@ class BlogPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     blog_title = db.Column(db.String(80), unique=True, nullable=False)
     blog_author = db.Column(db.String(120), unique=True, nullable=False)
-    blog_content = db.Column(db.Text)
+    date_posted = db.Column(db.DateTime, unique=True, nullable=False)
+    blog_content = db.Column(db.Text,nullable=False)
 
 @app.route('/')
 def home():
@@ -29,7 +30,9 @@ def addPost():
         title = request.form['blogTitle']
         author = request.form['blogAuthorName']
         content = request.form['blogContent']
-        blog_post = BlogPost(blog_title=title, blog_author=author, blog_content=content)
+
+        blog_post = BlogPost(blog_title=title, blog_author=author, blog_content=content, date_posted=datetime.now())
+       
         db.session.add(blog_post)
         db.session.commit()
         return redirect(url_for('displayPost', post_id=blog_post.id))
@@ -38,13 +41,14 @@ def addPost():
 
 @app.route('/blog')
 def displayBlog():
-    return "my blog page"
+    posts = BlogPost.query.order_by(BlogPost.date_posted.desc()).all()
+    return render_template('blog.html', posts=posts)
 
 @app.route('/blog/<post_id>')
 def displayPost(post_id):
     # get the last post in the database
     post = BlogPost.query.filter_by(id=post_id).one()
-    return render_template('blogpost.html',post=post)
+    return render_template('blogpost.html', post=post)
 
 @app.route('/aboutme')
 def aboutMe():
