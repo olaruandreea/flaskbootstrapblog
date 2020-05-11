@@ -3,6 +3,7 @@
 <head>
     {% block head %}
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>{% block title %}Recepies Blog{% endblock %}</title>
     {% endblock %}
 </head>
@@ -10,21 +11,42 @@
     <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-dark">
          <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-	            <li class="nav-item active">
-                     <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('displayBlog') }}">Blog<span class="sr-only">(current)</span></a> 
-               </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('addPost') }}">Add Post<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('aboutMe') }}">About Me<span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="{{ url_for('contactMe') }}">Contact Me<span class="sr-only">(current)</span></a>
-                </li>
+                {% if current_user.is_authenticated %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('displayBlog') }}">Blog<span class="sr-only">(current)</span></a> 
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('aboutMe') }}">About Me<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('contactMe') }}">Contact Me<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('addPost') }}">Add Post<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('logOut') }}">Log Out<span class="sr-only">(current)</span></a>
+                    </li>
+                {% else %}
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('home') }}">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                       <a class="nav-link" href="{{ url_for('displayBlog') }}">Blog<span class="sr-only">(current)</span></a> 
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('aboutMe') }}">About Me<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('contactMe') }}">Contact Me<span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{{ url_for('faqs') }}">Faqs<span class="sr-only">(current)</span></a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </nav>

@@ -1,1 +1,19 @@
 {% extends "base.html" %}
+
+<!--extend the functionality from the header of the parent component.-->
+{% block head %}
+    {{ super() }}
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/aboutme.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row"></div>
+        <div class="col">
+            <p1>About me<p1>
+            <p> Hi my name is Andreea and I enjoy baking and technology.</p>
+            <img id="me-image" src="{{url_for('static', filename='/images/me.jpg')}}" alt="image of me"/>
+        </div>
+    </div>
+</div>
+{% endblock %}
