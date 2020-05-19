@@ -4,10 +4,10 @@ from wtforms import TextField, TextAreaField, SubmitField, validators, Validatio
 
 
 class ContactForm(FlaskForm):
-    name = TextField("Name", validators=[DataRequired("Please enter your name")])
-    email = TextField("Email", validators=[DataRequired("Please enter your email address."), Email()])
-    message = TextAreaField("Message", validators=[DataRequired("Please enter a message")])
-    submit = SubmitField("Send")
+    name = TextField("NAME", validators=[DataRequired("Please enter your name")])
+    email = TextField("EMAIL", validators=[DataRequired("Please enter your email address."), Email()])
+    message = TextAreaField("MESSAGE", validators=[DataRequired("Please enter a message")])
+    submit = SubmitField("SUBMIT")
 
 
 class RegistrationForm(FlaskForm):

@@ -60,7 +60,7 @@ def contactMe():
 
 @app.errorhandler(404) 
 def notFound(e): 
-    return render_template("404.html") 
+    return render_template("/errors/404.html") 
 
 @app.route("/register", methods=['GET', 'POST'])
 def register():
@@ -73,12 +73,12 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Your account has been created! You are now able to log in', 'success')
-        return redirect(url_for('login'))
+        return redirect(url_for('logIn'))
     return render_template('/admin/signup.html', title='Register', form=form)
 
 
 @app.route("/login", methods=['GET', 'POST'])
-def login():
+def logIn():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
     form = LoginForm()
@@ -92,11 +92,15 @@ def login():
     return render_template('/admin/login.html', title='Login', form=form)
 
 @app.route("/logout")
-def logout():
+def logOut():
     logout_user()
     return redirect(url_for('home'))
 
 @app.route("/recepies")
 def recepies():
     return render_template("recepies.html") 
+
+@app.route("/faqs")
+def faqs():
+    return render_template("faqs.html") 
 
