@@ -1,12 +1,10 @@
-from flask import Blueprint
-from flask_login import login_user, current_user, logout_user, login_required
+from flask import Blueprint, render_template, request
+from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user, login_required
 from blog.forms import ContactForm, RegistrationForm, LoginForm
 from flask import Flask, abort, flash, Markup, redirect, flash, render_template,request, Response, session, url_for
-from blog.models import User
+from datetime import datetime
 
-auth_blueprint = Blueprint('auth', __name__,
-                         template_folder='templates',
-                         static_folder='static')
+auth_blueprint = Blueprint('auth_blueprint', __name__, template_folder='templates')
 
 @auth_blueprint.route("/register", methods=['GET', 'POST'])
 def register():
@@ -20,8 +18,7 @@ def register():
         db.session.commit()
         flash('Your account has been created! You are now able to log in', 'success')
         return redirect(url_for('logIn'))
-    return render_template('signup.html', title='Register', form=form)
-
+    return render_template('/admin/signup.html', title='Register', form=form)
 
 @auth_blueprint.route("/login", methods=['GET', 'POST'])
 def logIn():
@@ -35,7 +32,7 @@ def logIn():
             return redirect(next_page) if next_page else redirect(url_for('home'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
-    return render_template('login.html', title='Login', form=form)
+    return render_template('/admin/login.html', title='Login', form=form)
 
 @auth_blueprint.route("/logout")
 def logOut():
