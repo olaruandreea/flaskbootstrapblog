@@ -3,7 +3,7 @@
 <!--extend the functionality from the header of the parent component.-->
 {% block head %}
     {{ super() }}
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/aboutme.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('about_blueprint.static',filename='css/aboutme.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Francois+One&family=Kalam:wght@700&display=swap" rel="stylesheet">
 {% endblock %}
@@ -15,7 +15,7 @@
             <h1> ABOUT </h1>
         </div>
         <div class="col-5">
-            <img id="me-image" src="{{url_for('static', filename='/images/me.jpg')}}" alt="image of me"/>
+            <img id="me-image" src="{{url_for('about_blueprint.static', filename='/images/me.jpg')}}" alt="image of me"/>
         </div>
         <div class="col-5">
             <p>Hi, my name is Andreea. Welcome to my blog. I can't tell you how happy it makes me that you ended up on my page.</p>
