@@ -1,7 +1,11 @@
 from flask import Blueprint, render_template, request
 from blog.forms import ContactForm, RegistrationForm, LoginForm
 
-contact_blueprint = Blueprint('contact_blueprint', __name__, template_folder='templates')
+contact_blueprint = Blueprint('contact_blueprint', __name__,
+                                                template_folder='templates',
+                                                static_folder='static',
+                                                static_url_path='/blog.contact_blueprint.static')
+
 
 @contact_blueprint.route('/contactme', methods=['GET','POST'])
 def contactMe():

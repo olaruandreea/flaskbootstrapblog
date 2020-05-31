@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request
+from ..models.blog_post import BlogPost
 
-
-blog_blueprint = Blueprint('blog_blueprint', __name__, template_folder='templates')
+blog_blueprint = Blueprint('blog_blueprint', __name__, template_folder='templates', static_folder='static')
 
 @blog_blueprint.route('/addpost', methods=['GET','POST'])
 def addPost():

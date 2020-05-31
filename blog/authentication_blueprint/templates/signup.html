@@ -4,7 +4,7 @@
 <!--extend the functionality from the header of the parent component.-->
 {% block head %}
     {{ super() }}
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/admin/signup-register.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('auth_blueprint.static',filename='css/signup-register.css') }}">
 {% endblock %}
 
 {% block content %}
