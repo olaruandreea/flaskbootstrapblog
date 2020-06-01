@@ -1,5 +1,7 @@
-from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request, redirect, url_for
 from ..models.blog_post import BlogPost
+from datetime import datetime
+from ..__init__ import get_db
 
 blog_blueprint = Blueprint('blog_blueprint', __name__, template_folder='templates', static_folder='static')
 
@@ -11,12 +13,12 @@ def addPost():
         content = request.form['blogContent']
 
         blog_post = BlogPost(blog_title=title, blog_author=author, blog_content=content, date_posted=datetime.now())
-       
+        db = get_db()
         db.session.add(blog_post)
         db.session.commit()
-        return redirect(url_for('displayPost', post_id=blog_post.id))
+        return redirect(url_for('blog_blueprint.displayPost', post_id=blog_post.id))
     else:
-        return render_template('/admin/addpost.html')
+        return render_template('addpost.html')
 
 @blog_blueprint.route('/blog')
 def displayBlog():

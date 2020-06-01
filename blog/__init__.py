@@ -1,37 +1,39 @@
 import os
-from flask import Flask
+from flask import Flask, g
 from flask_mail import Mail, Message
-from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user, login_required
+from flask_bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+from config import DevConfig
+
+bcrypt = Bcrypt()    
+mail = Mail()
 
 def get_db():
-    return SQLAlchemy()
+    if 'db' not in g:
+        g.db = SQLAlchemy()
+    return g.db
 
 def create_app():
     app = Flask(__name__, instance_relative_config=False)
     ac = AppConfig(app)
     app = ac.app_config()
-    db = get_db()
-    db.init_app(app)
     with app.app_context():
+        db = get_db()
+        db.init_app(app)
         app = ac.add_blueprints()  # Import routes
         return app
 
 class AppConfig():
     def __init__(self, app):
         self.app = app
-    
+
     def app_config(self):
-        self.app.config["MAIL_SERVER"] = "smtp.gmail.com"
-        self.app.config["MAIL_PORT"] = 465
-        self.app.config["MAIL_USE_SSL"] = True
-        self.app.config["MAIL_USERNAME"] = os.environ.get('MAIL_USERNAME')
-        self.app.config["MAIL_PASSWORD"] = os.environ.get('MAIL_PASSWORD')
-        self.app.secret_key = os.environ.get('SECRET_KEY')
-        mail = Mail()
-        self.app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('SQLITE_URI')
+        self.app.config.from_object(DevConfig())
         mail.init_app(self.app)
+        
         # Add bootstrap to the website
         Bootstrap(self.app)
         return self.app 
