@@ -3,6 +3,9 @@ from flask_login import LoginManager, UserMixin, login_user, current_user, logou
 from blog.forms import ContactForm, RegistrationForm, LoginForm
 from flask import Flask, abort, flash, Markup, redirect, flash, render_template,request, Response, session, url_for
 from datetime import datetime
+from ..__init__ import bcrypt
+from ..models.user import *
+
 
 auth_blueprint = Blueprint('auth_blueprint', __name__, 
                                             template_folder='templates',
@@ -20,19 +23,19 @@ def register():
         db.session.add(user)
         db.session.commit()
         flash('Your account has been created! You are now able to log in', 'success')
-        return redirect(url_for('logIn'))
+        return redirect(url_for('auth_blueprint.logIn'))
     return render_template('signup.html', title='Register', form=form)
 
 @auth_blueprint.route("/login", methods=['GET', 'POST'])
 def logIn():
     if current_user.is_authenticated:
-        return redirect(url_for('home'))
+        return redirect(url_for('general_blueprint.home'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('home'))
+            return redirect(next_page) if next_page else redirect(url_for('general_blueprint.home'))
         else:
             flash('Login Unsuccessful. Please check email and password', 'danger')
     return render_template('login.html', title='Login', form=form)
@@ -40,4 +43,4 @@ def logIn():
 @auth_blueprint.route("/logout")
 def logOut():
     logout_user()
-    return redirect(url_for('home'))
+    return redirect(url_for('general_blueprint.home'))
