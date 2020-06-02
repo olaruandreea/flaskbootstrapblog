@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, request
-from blog.forms import ContactForm, RegistrationForm, LoginForm
 from flask_mail import Mail, Message
+from blog.forms.contact_form import ContactForm
 import os
-from ..__init__ import mail
+from ..routes import mail
 
 contact_blueprint = Blueprint('contact_blueprint', __name__,
                                                 template_folder='templates',

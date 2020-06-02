@@ -1,9 +1,11 @@
 from flask import Blueprint, render_template, request
 from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user, login_required
-from blog.forms import ContactForm, RegistrationForm, LoginForm
+from blog.forms.contact_form import ContactForm
+from blog.forms.registration_form import RegistrationForm
+from blog.forms.login_form import LoginForm
 from flask import Flask, abort, flash, Markup, redirect, flash, render_template,request, Response, session, url_for
 from datetime import datetime
-from ..__init__ import bcrypt
+from ..routes import bcrypt
 from ..models.user import *
 
 
