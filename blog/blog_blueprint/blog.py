@@ -1,7 +1,8 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, Flask
 from ..models.blog_post import BlogPost
 from datetime import datetime
 from ..routes import get_db
+from flask_security import Security, SQLAlchemyUserDatastore, UserMixin, RoleMixin, login_required
 
 blog_blueprint = Blueprint('blog_blueprint', __name__, template_folder='templates', static_folder='static')
 

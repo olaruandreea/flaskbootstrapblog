@@ -40,12 +40,14 @@ class AppConfig():
 
     def add_blueprints(self):
         from general_blueprint.general import general_blueprint
+        from faqs_blueprint.faqs import faqs_blueprint
         from authentication_blueprint.auth import auth_blueprint
         from recepies_blueprint.recepies import recepies_blueprint
         from blog_blueprint.blog import blog_blueprint
         from contact_blueprint.contact import contact_blueprint
         from about_blueprint.about import about_blueprint
         self.app.register_blueprint(general_blueprint)
+        self.app.register_blueprint(faqs_blueprint)
         self.app.register_blueprint(auth_blueprint)
         self.app.register_blueprint(recepies_blueprint)
         self.app.register_blueprint(blog_blueprint)

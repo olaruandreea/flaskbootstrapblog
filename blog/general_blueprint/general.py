@@ -1,4 +1,6 @@
 from flask import Blueprint, render_template, request
+from flask_login import current_user
+
 
 general_blueprint = Blueprint('general_blueprint', __name__,
                                                 template_folder='templates',
@@ -13,7 +15,5 @@ def home():
 def notFound(e): 
     return render_template("404.html") 
 
-@general_blueprint.route("/faqs")
-def faqs():
-    return render_template("faqs.html") 
+
  
