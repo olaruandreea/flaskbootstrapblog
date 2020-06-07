@@ -1,12 +1,12 @@
 import sys
 import os
 sys.path.append('..')
+from routes import create_app
 from config import TestConfig
 from flask_testing import TestCase
-from blog import create_app, get_db
 import unittest
 from flask_mail import Mail, Message
- 
+
 class BasicTests(unittest.TestCase):
  
     def setUp(self):
@@ -24,8 +24,7 @@ class BasicTests(unittest.TestCase):
  
     def tearDown(self):
         pass
- 
- 
+  
     def test_main_page(self):
         response = self.app.get('/', follow_redirects=True)
         self.assertEqual(response.status_code, 200)
@@ -60,16 +59,10 @@ class BasicTests(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
  
     def test_make_unique_nickname(self):
-        u = User(nickname='john', email='john@example.com')
+        from blog.models.user import User
+        u = User(username='john', email='john@example.com')
         db.session.add(u)
         db.session.commit()
-        nickname = User.make_unique_nickname('john')
-        assert nickname != 'john'
-        u = User(nickname=nickname, email='susan@example.com')
-        db.session.add(u)
-        db.session.commit()
-        nickname2 = User.make_unique_nickname('john')
-        assert nickname2 != 'john'
-        assert nickname2 != nickname
+
 if __name__ == "__main__":
     unittest.main()
