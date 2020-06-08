@@ -1,0 +1,1 @@
+from website.blueprints.general_blueprint.general import general_blueprint
