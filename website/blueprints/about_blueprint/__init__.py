@@ -1,0 +1,1 @@
+from website.blueprints.about_blueprint.about import about_blueprint

@@ -1,0 +1,1 @@
+from website.blueprints.recepies_blueprint.recepies import recepies_blueprint

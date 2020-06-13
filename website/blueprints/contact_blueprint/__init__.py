@@ -1,0 +1,1 @@
+from website.blueprints.contact_blueprint.contact import contact_blueprint

@@ -1,6 +1,6 @@
-from blog import *
-from blog.models.user import *
-from blog.models.blog_post import *
+from website import *
+from website.models.user import *
+from website.models.blog_post import *
 
 def create_db():
     app = create_app()
