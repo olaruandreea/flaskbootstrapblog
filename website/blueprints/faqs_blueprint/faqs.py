@@ -8,4 +8,4 @@ faqs_blueprint = Blueprint('faqs_blueprint', __name__,
 
 @faqs_blueprint.route("/faqs")
 def faqs():
-    return render_template("faqs.html") 
+    return render_template("faqs.html")

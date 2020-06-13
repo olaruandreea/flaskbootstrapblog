@@ -14,6 +14,3 @@ def home():
 @general_blueprint.errorhandler(404) 
 def notFound(e): 
     return render_template("404.html") 
-
-
- 

@@ -25,4 +25,3 @@ def contactMe():
     
     elif request.method == 'GET':
         return render_template('contactme.html', form=form)
-
