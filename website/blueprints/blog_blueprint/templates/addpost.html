@@ -1,7 +1,14 @@
 {% extends "base.html" %}
+<!--extend the functionality from the header of the parent component.-->
+{% block head %}
+    {{ super() }}
+    <script type="text/javascript" src="{{ url_for('blog_blueprint.static', filename='javascript/summernote.js') }}"></script>
+{% endblock %}
+
+
 {% block content %}
     <div class="container">
-        <form class="form-horizontal" method="post" action="{{ url_for('blog_bluperint.addPost') }}">
+        <form class="form-horizontal" method="post" action="{{ url_for('blog_blueprint.addPost') }}">
             <fieldset>
             <legend>Create Your Blog</legend>
 
@@ -20,9 +27,9 @@
             </div>   
 
             <div class="form-group">
-                <label class="col-md-4 control-label" for="txtPost">Blog Content</label>
+                <label class="col-md-4 control-label" for="summernote">Blog Content</label>
                 <div class="col-md-4">                     
-                    <textarea class="form-control" id="txtPost" name="blogContent" ></textarea>
+                    <textarea id="summernote" name="blogContent" ></textarea>
                 </div>
             </div>
 
