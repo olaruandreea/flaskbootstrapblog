@@ -1,4 +1,10 @@
 {% extends "base.html" %}
+<!--extend the functionality from the header of the parent component.-->
+{% block head %}
+    {{ super() }}
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('blog_blueprint.static',filename='css/blog.css') }}">
+{% endblock %}
+
 {% block content %}
 <!-- Main Content -->
 <div class="container">
@@ -11,7 +17,7 @@
               {{ post.blog_title }}
             </h2>
           </a>
-          <p class="post-meta">Posted by {{ post.author }} on {{ post.date_posted.strftime('%B %d, %Y') }}</p>
+          <p class="post-meta">Posted by {{ post.blog_author }} on {{ post.date_posted.strftime('%B %d, %Y') }}</p>
         </div>
         {% endfor %}
         <hr>

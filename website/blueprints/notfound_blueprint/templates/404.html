@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('general_blueprint.static',filename='css/404.css') }}">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('notfound_blueprint.static',filename='css/404.css') }}">
         <title>{% block title %}Cook With Me{% endblock %}</title>
     {% endblock %}
 </head>
@@ -15,7 +15,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-6">
-                <img id="image" src="{{url_for('general_blueprint.static', filename='/images/404.jpeg')}}" alt="nuts image"/>
+                <img id="image" src="{{url_for('notfound_blueprint.static', filename='/images/404.jpeg')}}" alt="nuts image"/>
             </div>
             <div class="col-6">
                 <h1>Ah, nuts!</h1>

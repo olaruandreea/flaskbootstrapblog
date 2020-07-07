@@ -1,13 +1,19 @@
 {% extends "base.html" %}
+<!--extend the functionality from the header of the parent component.-->
+{% block head %}
+    {{ super() }}
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('blog_blueprint.static',filename='css/blog.css') }}">
+{% endblock %}
+
 {% block content %}
 <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
         <div class="post-heading">
-          <h1>{{ post.blog_title }}</h1>
+          <h1>{{ post.blog_title  }}</h1>
           <h2 class="subheading">{{ post.blog_author }}</h2>
           <span class="meta">
-            {{ post.blog_content }}
+            {{ post.blog_content | safe }}
          </span>
         </div>
       </div>

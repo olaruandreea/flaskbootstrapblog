@@ -22,8 +22,8 @@ def addPost():
         db.session.commit()
         return redirect(url_for('blog_blueprint.displayPost', post_id=blog_post.id))
     else:
-        return render_template('addpost.html')
-
+        return render_template('addpost.html') 
+        
 @blog_blueprint.route('/blog')
 def displayBlog():
     posts = BlogPost.query.order_by(BlogPost.date_posted.desc()).all()

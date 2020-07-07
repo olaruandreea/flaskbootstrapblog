@@ -1,3 +1,6 @@
+
 $(document).ready(function() {
-    $('#summernote').summernote();
-  });
+    $('textarea').summernote({
+        height: 300,   //set editable area's height
+    });
+});

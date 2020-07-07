@@ -39,6 +39,8 @@ class AppConfig():
         return self.app 
 
     def add_blueprints(self):
+        from blueprints.notfound_blueprint.notfound import notfound_blueprint
+        self.app.register_blueprint(notfound_blueprint)
         from blueprints.general_blueprint.general import general_blueprint
         self.app.register_blueprint(general_blueprint)
         from blueprints.faqs_blueprint.faqs import faqs_blueprint

@@ -1,0 +1,1 @@
+from website.blueprints.notfound_blueprint.notfound import notfound_blueprint

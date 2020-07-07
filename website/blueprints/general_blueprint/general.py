@@ -11,6 +11,3 @@ general_blueprint = Blueprint('general_blueprint', __name__,
 def home():
     return render_template("home.html")
 
-@general_blueprint.errorhandler(404) 
-def notFound(e): 
-    return render_template("404.html") 
