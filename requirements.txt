@@ -33,7 +33,7 @@ packaging==20.3
 passlib==1.7.2
 pathlib2==2.3.5
 pluggy==0.13.1
-py==1.8.1
+py==1.10.0
 pycparser==2.20
 pyparsing==2.4.7
 pytest==4.6.9
